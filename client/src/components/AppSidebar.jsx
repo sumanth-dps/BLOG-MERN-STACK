@@ -47,13 +47,20 @@ const AppSidebar = () => {
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
+              <br></br>
               <SidebarMenuButton>
                 <IoHomeOutline />
                 <Link to={RouteIndex}>Home</Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
 
-            {user && user.isLoggedIn ? (
+{/*             {user && user.isLoggedIn ? (
+              <>
+                              </>
+            ) : (
+              <></>
+            )} */}
+            {user && user.isLoggedIn && user.user.role === "admin" ? (
               <>
                 <SidebarMenuItem>
                   <SidebarMenuButton>
@@ -67,12 +74,7 @@ const AppSidebar = () => {
                     <Link to={RouteCommentDetails}>Comments</Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
-              </>
-            ) : (
-              <></>
-            )}
-            {user && user.isLoggedIn && user.user.role === "admin" ? (
-              <>
+
                 <SidebarMenuItem>
                   <SidebarMenuButton>
                     <BiCategoryAlt />
