@@ -15,15 +15,20 @@ const BlogCard = ({ props }) => {
         <Link to={RouteBlogDetails(props.category.slug, props.slug)}>
             <Card className="pt-5">
                 <CardContent>
-                    <div className='flex items-center justify-between'>
+                    <div className='flex items-center'>
                         <div className='flex justify-between items-center gap-2'>
-                            <Avatar>
+                            <Avatar className="border-border border-2 ">
                                 <AvatarImage src={props.author.avatar || usericon} />
                             </Avatar>
                             <span>{props.author.name}</span>
                         </div>
                         {props.author.role === 'admin' &&
-                            <Badge variant="outline" className="bg-violet-500">Admin</Badge>
+                            // <Badge variant="outline" className="bg-violet-500">Admin</Badge>
+                         <img
+                className="w-5 ml-3"
+                src="https://img.icons8.com/color/48/instagram-verification-badge.png"
+                alt="instagram-verification-badge"
+              />
                         }
                     </div>
 
