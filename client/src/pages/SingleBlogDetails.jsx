@@ -34,6 +34,7 @@ const SingleBlogDetails = () => {
                                 <Avatar>
                                     <AvatarImage src={data.blog.author.avatar} />
                                 </Avatar>
+                                <div>
                                 <div flex items-center gap-2>
                                     <p className='font-bold'>{data.blog.author.name}</p>
                                     {data.blog.author.role === "admin" && (
@@ -43,6 +44,7 @@ const SingleBlogDetails = () => {
                         alt="instagram-verification-badge"
                       />
                     )}
+                                    </div>
                                     <p>Date: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
                                 </div>
                             </div>
