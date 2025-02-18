@@ -10,7 +10,6 @@ const SearchBox = () => {
         setQuery(e.target.value)
     }
     const handleSubmit = (e) => {
-        e.preventDefault()
         navigate(RouteSearch(query))
     }
     return (
