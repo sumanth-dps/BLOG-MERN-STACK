@@ -9,7 +9,8 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import { Link } from "react-router-dom";
-import logo from "@/assets/images/blognest.png";
+import logoLight from "@/assets/images/blognest.png";
+import logoDark from "@/assets/images/nestblog.png";
 import { IoHomeOutline } from "react-icons/io5";
 import { BiCategoryAlt } from "react-icons/bi";
 import { GrBlog } from "react-icons/gr";
@@ -27,7 +28,8 @@ import {
 import { useFetch } from "@/hooks/useFetch";
 import { getEvn } from "@/helpers/getEnv";
 import { useSelector } from "react-redux";
-
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 const AppSidebar = () => {
   const user = useSelector((state) => state.user);
   const { data: categoryData } = useFetch(
@@ -41,7 +43,7 @@ const AppSidebar = () => {
   return (
     <Sidebar>
       <SidebarHeader className="bg-white">
-        <img src={logo} width={120} />
+        <img src={theme === "dark" ? logoDark : logoLight} width={120} />
       </SidebarHeader>
       <SidebarContent className="bg-white">
         <SidebarGroup>
