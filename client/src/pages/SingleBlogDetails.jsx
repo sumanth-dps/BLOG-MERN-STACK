@@ -46,8 +46,8 @@ const SingleBlogDetails = () => {
                     )}
                   </div>
 
-                  <p classname="text-gray-700">
-                    {moment(data.blog.createdAt).format("DD-MM-YYYY")}
+                  <p classname="text-gray-500">
+                    Date:{moment(data.blog.createdAt).format("DD-MM-YYYY")}
                   </p>
                 </div>
               </div>
