@@ -36,9 +36,11 @@ import Comments from "./pages/Comments";
 import User from "./pages/User";
 import AuthRouteProtechtion from "./components/AuthRouteProtechtion";
 import OnlyAdminAllowed from "./components/OnlyAdminAllowed";
+import { ThemeProvider } from "./context/ThemeContext";
 
 const App = () => {
   return (
+    <ThemeProvider>
     <BrowserRouter>
       <Routes>
         <Route path={RouteIndex} element={<Layout />}>
@@ -68,6 +70,7 @@ const App = () => {
         <Route path={RouteSignUp} element={<SignUp />} />
       </Routes>
     </BrowserRouter>
+    </ThemeProvider>
   );
 };
 
