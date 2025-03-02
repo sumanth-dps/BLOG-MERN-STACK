@@ -39,6 +39,7 @@ const AppSidebar = () => {
       credentials: "include",
     }
   );
+    const { theme, toggleTheme } = useContext(ThemeContext);
 
   return (
     <Sidebar>
