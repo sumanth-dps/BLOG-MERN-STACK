@@ -43,10 +43,10 @@ const AppSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarHeader className="bg-white">
+      <SidebarHeader className="bg-background">
         <img src={theme === "dark" ? logoDark : logoLight} width={120} />
       </SidebarHeader>
-      <SidebarContent className="bg-white">
+      <SidebarContent className="bg-background">
         <SidebarGroup>
           <SidebarMenu>
             <SidebarMenuItem>
