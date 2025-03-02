@@ -35,7 +35,7 @@ const SingleBlogDetails = () => {
                                     <AvatarImage src={data.blog.author.avatar} />
                                 </Avatar>
                                 <div>
-                                <div flex flex-row items-center gap-2>
+                                <div classname="flex items-center">
                                     <p className='font-bold'>{data.blog.author.name}</p>
                                     {data.blog.author.role === "admin" && (
                       <img
