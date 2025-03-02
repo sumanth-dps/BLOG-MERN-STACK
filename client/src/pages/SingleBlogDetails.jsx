@@ -24,55 +24,57 @@ const SingleBlogDetails = () => {
     if (loading) return <Loading />
     return (
 
-        <div className='md:flex-nowrap flex-wrap flex justify-between gap-20'>
-            {data && data.blog &&
-                <>
-                    <div className='border rounded md:w-[70%] w-full p-5'>
-                        <h1 className='text-2xl font-bold mb-5'>{data.blog.title}</h1>
-                        <div className='flex justify-between items-center'>
-                            <div className='flex justify-between items-center gap-5'>
-                                <Avatar>
-                                    <AvatarImage src={data.blog.author.avatar} />
-                                </Avatar>
-                                <div>
-                                <div classname="flex items-center">
-                                    <p className='font-bold'>{data.blog.author.name}</p>
-                                    {data.blog.author.role === "admin" && (
+        <div className="md:flex-nowrap flex-wrap flex justify-between gap-20">
+      {data && data.blog && (
+        <>
+          <div className="border rounded md:w-[70%] w-full p-5">
+            <h1 className="text-2xl font-bold mb-5">{data.blog.title}</h1>
+            <div className="flex justify-between items-center">
+              <div className="flex justify-between items-center gap-5">
+                <Avatar>
+                  <AvatarImage src={data.blog.author.avatar} />
+                </Avatar>
+                <div>
+                  <div className="flex items-center">
+                    <p className="font-bold">{data.blog.author.name}</p>
+                    {data.blog.author.role === "admin" && (
                       <img
                         className="w-5 ml-3"
                         src="https://img.icons8.com/color/48/instagram-verification-badge.png"
                         alt="instagram-verification-badge"
                       />
                     )}
-                                    </div>
-                                    <p>Date: {moment(data.blog.createdAt).format('DD-MM-YYYY')}</p>
-                                </div>
-                            </div>
-                            <div className='flex justify-between items-center gap-5'>
-                                <LikeCount props={{ blogid: data.blog._id }} />
-                                <CommentCount props={{ blogid: data.blog._id }} />
-                            </div>
-                        </div>
-                        <div className='my-5'>
-                            <img src={data.blog.featuredImage} className='rounded' />
-                        </div>
-                        <div dangerouslySetInnerHTML={{ __html: decode(data.blog.blogContent) || '' }}>
+                  </div>
 
-                        </div>
-
-                        <div className='border-t mt-5 pt-5'>
-                            <Comment props={{ blogid: data.blog._id }} />
-                        </div>
-
-
-                    </div>
-                </>
-
-            }
-            <div className='border rounded md:w-[30%] w-full p-5'>
-                <RelatedBlog props={{ category: category, currentBlog: blog }} />
+                  <p>
+                    Date: {moment(data.blog.createdAt).format("DD-MM-YYYY")}
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center gap-5">
+                <LikeCount props={{ blogid: data.blog._id }} />
+                <CommentCount props={{ blogid: data.blog._id }} />
+              </div>
             </div>
-        </div>
+            <div className="my-5">
+              <img src={data.blog.featuredImage} className="rounded" />
+            </div>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: decode(data.blog.blogContent) || "",
+              }}
+            ></div>
+
+            <div className="border-t mt-5 pt-5">
+              <Comment props={{ blogid: data.blog._id }} />
+            </div>
+          </div>
+        </>
+      )}
+      <div className="border rounded md:w-[30%] w-full p-5">
+        <RelatedBlog props={{ category: category, currentBlog: blog }} />
+      </div>
+    </div> 
     )
 }
 
