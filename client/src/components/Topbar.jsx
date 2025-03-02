@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import logo from "@/assets/images/blognest.png";
+import React, { useState, useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext"; // Import ThemeContext
+import logoLight from "@/assets/images/blognest.png";
+import logoDark from "@/assets/images/nestblog.png";
 import { Button } from "./ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { MdLogin } from "react-icons/md";
+import { BsSun, BsMoon } from "react-icons/bs"; // Import icons
 import SearchBox from "./SearchBox";
 import {
   RouteBlogAdd,
@@ -34,8 +37,9 @@ import { useSidebar } from "./ui/sidebar";
 
 const Topbar = () => {
   const { toggleSidebar } = useSidebar();
+  const { theme, toggleTheme } = useContext(ThemeContext); // Use ThemeContext
   const [showSearch, setShowSearch] = useState(false);
-  const dispath = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
 
@@ -52,7 +56,7 @@ const Topbar = () => {
       if (!response.ok) {
         return showToast("error", data.message);
       }
-      dispath(removeUser());
+      dispatch(removeUser());
       navigate(RouteIndex);
       showToast("success", data.message);
     } catch (error) {
@@ -65,18 +69,21 @@ const Topbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center h-16 fixed w-full z-20 bg-white px-5 border-b">
+    <div className="flex justify-between items-center h-16 fixed w-full z-20 bg-background px-5 border-b">
       <div className="flex justify-center items-center gap-2">
         <button onClick={toggleSidebar} className="md:hidden" type="button">
           <AiOutlineMenu />
         </button>
         <Link to={RouteIndex}>
-          <img src={logo} className="sm:hidden md:block md:w-auto  md:h-10" />
+          <img
+            src={theme === "dark" ? logoDark : logoLight}
+            className="sm:hidden md:block md:w-auto  md:h-10 p-2 lg:w-[220px] lg:h-auto"
+          />
         </Link>
       </div>
       <div className="w-[500px]">
         <div
-          className={`md:relative md:block absolute bg-white left-0 w-full md:top-0 top-16 md:p-0 p-5 ${
+          className={`md:relative md:block absolute bg-background left-0 w-full md:top-0 top-16 md:p-0 p-5 ${
             showSearch ? "block" : "hidden"
           }`}
         >
@@ -90,6 +97,14 @@ const Topbar = () => {
           className="md:hidden block"
         >
           <IoMdSearch size={25} />
+        </button>
+
+        {/* Theme Toggle Button */}
+        <button
+          onClick={toggleTheme}
+          className="p-2 rounded-full border bg-secondary hover:bg-primary transition transition-all duration-1000"
+        >
+          {theme === "dark" ? <BsSun size={20} /> : <BsMoon size={20} />}
         </button>
 
         {!user.isLoggedIn ? (
