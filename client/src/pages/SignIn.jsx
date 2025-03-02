@@ -20,7 +20,9 @@ import { getEvn } from "@/helpers/getEnv";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/redux/user/user.slice";
 import GoogleLogin from "@/components/GoogleLogin";
-import logo from "@/assets/images/blognest.png";
+import logoLight from "@/assets/images/blognest.png";
+import logoDark from "@/assets/images/nestblog.png";
+import { ThemeContext } from "@/context/ThemeContext";
 const SignIn = () => {
   const dispath = useDispatch();
 
@@ -37,6 +39,7 @@ const SignIn = () => {
       password: "",
     },
   });
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   async function onSubmit(values) {
     try {
@@ -66,7 +69,7 @@ const SignIn = () => {
       <Card className="w-[400px] p-5">
         <div className="flex justify-center items-center mb-2">
           <Link to={RouteIndex}>
-            <img src={logo} />
+            <img src={theme === "dark" ? logoDark : logoLight} />
           </Link>
         </div>
         <h1 className="text-2xl font-bold text-center mb-5">
