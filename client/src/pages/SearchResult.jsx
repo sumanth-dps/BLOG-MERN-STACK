@@ -10,7 +10,7 @@ const SearchResult = () => {
     const { data: blogData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/blog/search?q=${q}`, {
         method: 'get',
         credentials: 'include'
-    })
+    },[q])
 
     return (
         <>
